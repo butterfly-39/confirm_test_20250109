@@ -1,26 +1,20 @@
-body {
-    background-color: #fff;
-}
-
 .header {
     padding: 20px 0;
+    background-color: #fff;
 }
 
 .header__inner {
     max-width: 1230px;
     margin: 0 auto;
     padding: 0 15px;
-}
-
-.header__content {
     display: flex;
     align-items: center;
     position: relative;
 }
 
-.header__content h1 {
+.header__title {
     margin: 0;
-    color: #877979;
+    color: #9f876e;
     font-size: 24px;
     font-weight: 300;
     text-align: center;
@@ -30,11 +24,11 @@ body {
 }
 
 /* ログインボタンのスタイル */
-.login-btn {
+.header__btn {
     position: absolute;
     right: 0;
-    font-size: 14px;
-    padding: 3px 20px;
+    font-size: 13px;
+    padding: 2px 20px;
     color: #bba9a9;
     text-decoration: none;
     border: 1px solid #bba9a9;

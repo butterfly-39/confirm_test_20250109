@@ -14,10 +14,8 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <div class="header__content">
-                <h1>FashionablyLate</h1>
-                @yield('header')
-            </div>
+            <h1 class="header__title">FashionablyLate</h1>
+            @yield('button')
         </div>
     </header>
 
@@ -25,4 +23,5 @@
         @yield('content')
     </main>
 </body>
+
 </html>
