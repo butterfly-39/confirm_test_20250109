@@ -20,7 +20,7 @@ body {
 
 .header__content h1 {
     margin: 0;
-    color: #707070;
+    color: #877979;
     font-size: 24px;
     font-weight: 300;
     text-align: center;
@@ -35,14 +35,10 @@ body {
     right: 0;
     font-size: 14px;
     padding: 3px 20px;
-    color: #707070;
+    color: #bba9a9;
     text-decoration: none;
-    border: 1px solid #917f7f;
+    border: 1px solid #bba9a9;
+    background-color: #f4f2f2;
     font-family: 'Libre Baskerville',
             serif;
-}
-
-.login-btn:hover {
-    background-color: #917f7f;
-    color: #fff;
 }
