@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +7,17 @@
     <title>FashionablyLate</title>
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}">
     <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
     @yield('css')
 </head>
 
 <body>
     <header class="header">
         <div class="header__inner">
-            <h1>FashionablyLate</h1>
-            @yield('header')
+            <div class="header__content">
+                <h1>FashionablyLate</h1>
+                @yield('header')
+            </div>
         </div>
     </header>
 

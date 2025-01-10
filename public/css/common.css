@@ -4,6 +4,7 @@ body {
 
 .header {
     padding: 20px 0;
+    border-bottom: 1px solid #ddd;
 }
 
 .header__inner {
@@ -15,34 +16,21 @@ body {
 .header__content {
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: space-between;
 }
 
 .header__content h1 {
     margin: 0;
     color: #707070;
     font-size: 24px;
-    font-weight: 300;
-    text-align: center;
-    width: 100%;
-    font-family: 'Libre Baskerville',
-        serif;
+    font-weight: normal;
 }
 
 /* ログインボタンのスタイル */
 .login-btn {
-    position: absolute;
-    right: 0;
-    font-size: 14px;
-    padding: 3px 20px;
+    padding: 8px 20px;
     color: #707070;
     text-decoration: none;
-    border: 1px solid #917f7f;
-    font-family: 'Libre Baskerville',
-            serif;
-}
-
-.login-btn:hover {
-    background-color: #917f7f;
-    color: #fff;
+    border: 1px solid #707070;
+    border-radius: 3px;
 }
