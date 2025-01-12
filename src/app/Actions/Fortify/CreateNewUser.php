@@ -20,8 +20,10 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input): User
     {
-        $request = new RegisterRequest();
-        $request->validate($input);
+        // フォームリクエストのインスタンスを取得
+        $request = app(RegisterRequest::class);
+        $request->merge($input); // 入力データをセット
+        $request->validateResolved(); // バリデーションを実行
 
         return User::create([
             'name' => $input['name'],

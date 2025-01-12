@@ -16,3 +16,4 @@ use App\Http\Controllers\AuthController;
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);
 });
+Route::get('/logout', [AuthController::class, 'logout']);
