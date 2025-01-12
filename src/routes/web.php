@@ -19,3 +19,4 @@ Route::middleware('auth')->group(function () {
 });
 Route::get('/logout', [AuthController::class, 'logout']);
 Route::get('/', [ContactController::class, 'index']);
+Route::post('/confirm', [ContactController::class, 'confirm']);

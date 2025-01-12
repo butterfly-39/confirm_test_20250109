@@ -22,8 +22,8 @@
         </div>
         <div class="form__group-content">
             <div class="form__input--text">
-                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="例: 山田">
-                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="例: 太郎">
+                <input type="text" name="last_name" value="{{ old('last_name') }}" placeholder="例: 山田">
+                <input type="text" name="first_name" value="{{ old('first_name') }}" placeholder="例: 太郎">
             </div>
             <div class="form__error">
                 @error('first_name')
@@ -79,11 +79,11 @@
         </div>
         <div class="form__group-content">
             <div class="form__input--text">
-                <input type="tel" name="tel1" value="{{ old('tel1') }}" placeholder="080" maxlength="3">
+                <input type="tel" name="tel1" value="{{ old('tel1') }}" placeholder="080">
                 -
-                <input type="tel" name="tel2" value="{{ old('tel2') }}" placeholder="1234" maxlength="4">
+                <input type="tel" name="tel2" value="{{ old('tel2') }}" placeholder="1234" >
                 -
-                <input type="tel" name="tel3" value="{{ old('tel3') }}" placeholder="5678" maxlength="4">
+                <input type="tel" name="tel3" value="{{ old('tel3') }}" placeholder="5678" >
             </div>
             <div class="form__error">
                 @error('tel1')
@@ -159,7 +159,7 @@
         </div>
         <div class="form__group-content">
             <div class="form__input--textarea">
-                <textarea name="content" placeholder="例: お問い合わせ内容をご記載ください"></textarea>
+                <textarea name="content" value="{{ old('content') }}" placeholder="例: お問い合わせ内容をご記載ください"></textarea>
             </div>
             <div class="form__error">
                 @error('content')
