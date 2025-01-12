@@ -136,6 +136,14 @@
         </div>
         <div class="form__group-content">
             <div class="form__input--select">
+                <select name="category_id">
+                    <option value="" disabled selected>選択してください</option>
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                            {{ $category->content }}
+                        </option>
+                    @endforeach
+                </select>
             </div>
             <div class="form__error">
                 @error('category_id')
