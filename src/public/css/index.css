@@ -1,3 +1,80 @@
-.main {
+body {
     background-color: #fff;
+}
+
+.contact-form__content {
+    margin: 0 auto;
+    padding: 30px 50px;
+    max-width: 1000px;
+}
+
+h2 {
+    font-family: 'Libre Baskerville',
+        serif;
+    text-align: center;
+    font-size: 24px;
+    color: #9f876e;
+    margin-bottom: 40px;
+}
+
+.form__group {
+    display: flex;
+    /* 横並びにする */
+    margin-bottom: 20px;
+}
+
+.form__group-title {
+    width: 240px;
+    /* タイトル部分の幅を固定 */
+    padding-top: 5px;
+    /* 上部に少しスペースを追加 */
+}
+
+.form__label--item,
+.form__input--radio {
+    color: #9f876e;
+}
+
+.form__input--text input,
+.form__input--select select,
+.form__input--textarea textarea {
+    width: 80%;
+    padding: 10px;
+    font-size: 13px;
+    color: #9f876e;
+    border: 1px solid rgb(244, 241, 241);
+    background-color: rgb(244, 241, 241);
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form__label--required {
+    color: #df9e9c;
+}
+
+.form__group-content {
+    flex: 1;
+    /* 残りのスペースを全て使用 */
+}
+
+.form__error {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #d9534f;
+}
+
+.form__button-submit {
+    background-color: #7c6d5c;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    width: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+.form__button-submit:hover {
+    background-color: #705b50;
 }

@@ -18,4 +18,9 @@ class ContactController extends Controller
         $contact = $request->all();
         return view('confirm', compact('contact'));
     }
+
+    public function thanks()
+    {
+        return view('thanks');
+    }
 }

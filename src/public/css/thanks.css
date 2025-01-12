@@ -1,0 +1,52 @@
+main {
+    max-width: 1230px;
+    color: #8e7963;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 200px;
+    margin: 0 auto;
+    color: #ebe7e4;
+    font-weight: bold;
+    opacity: 0.4;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+h2 {
+    margin: auto;
+    font-size: 20px;
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    text-align: center;
+}
+
+.form-group {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.submit-btn {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    padding: 0 30px;
+    height: 30px;
+    border: none;
+    background: #8e7963;
+    color: #fff;
+    cursor: pointer;
+}
