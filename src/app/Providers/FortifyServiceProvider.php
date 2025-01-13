@@ -13,7 +13,6 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use App\Http\Requests\LoginRequest;
-use Laravel\Fortify\Http\Requests\LoginRequest as FortifyLoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -45,8 +44,7 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(10)->by($email . $request->ip());
         });
 
-        Fortify::authenticateUsing(function (Request $request) {
-            return redirect('/login');
-        });
+        //ログイン時のフォームリクエスト
+        $this->app->bind(FortifyLoginRequest::class, LoginRequest::class);
     }
 }

@@ -14,8 +14,7 @@
         <h1>Thank you</h1>
         <h2>お問い合わせありがとうございました</h2>
         <div class="contact-form__content">
-            <form action="/index" method="post">
-            @csrf
+            <form action="/" method="get">
                 <div class="form-group">
                     <button type="submit" class="submit-btn">HOME</button>
                 </div>

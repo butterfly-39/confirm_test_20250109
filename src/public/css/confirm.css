@@ -5,8 +5,10 @@
 }
 
 h2 {
+    font-family: 'Libre Baskerville',
+            serif;
     text-align: center;
-    color: #8e7963;
+    color: #9f876e;
     margin-bottom: 20px;
 }
 
@@ -27,13 +29,15 @@ h2 {
     padding: 5px;
     width: 30%;
     border-bottom: 1px solid #ddd;
-    background-color: #8e7963;
+    background-color: #9c8974;
     color: #ddd;
 }
 
 .confirm-table__text {
     padding: 15px;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
 }
 
 .confirm-table__text span {
