@@ -19,10 +19,11 @@ class ContactController extends Controller
 
     public function confirm(ContactRequest $request)
     {
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail']);
-
         // 電話番号を結合
-        $contact['tel'] = $request->tel1 . $request->tel2 . $request->tel3;
+        $tel = $request->tel1 . $request->tel2 . $request->tel3;
+
+        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail']);
+        $contact['tel'] = $tel;
 
         $category = Category::find($request->category_id);
         return view('confirm', compact('contact', 'category'));
@@ -35,10 +36,7 @@ class ContactController extends Controller
         }
 
         // 基本データの取得
-        $contact = $request->only(['last_name', 'first_name', 'gender', 'email', 'address', 'building', 'category_id', 'detail']);
-
-        // 電話番号の結合
-        $contact['tel'] = $request->tel1 . $request->tel2 . $request->tel3;
+        $contact = $request->only(['last_name', 'first_name', 'gender', 'email','tel', 'address', 'building', 'category_id', 'detail']);
 
         // 性別の数値変換を修正
         $genderMap = [
@@ -50,5 +48,41 @@ class ContactController extends Controller
 
         Contact::create($contact);
         return view('thanks');
+    }
+
+    public function admin(Request $request)
+    {
+        $query = Contact::query()
+            ->with('category');
+
+        // 名前やメールアドレスでの絞り込み
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function($q) use ($search) {
+                $q->where('first_name', 'LIKE', "%{$search}%")
+                    ->orWhere('last_name', 'LIKE', "%{$search}%")
+                    ->orWhere('email', 'LIKE', "%{$search}%");
+            });
+        }
+
+        // 性別での絞り込み
+        if ($request->filled('gender') && $request->input('gender') !== '0') {
+            $query->where('gender', $request->input('gender'));
+        }
+
+        // カテゴリーでの絞り込み
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->input('category'));
+        }
+
+        // 日付での絞り込み
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->input('date'));
+        }
+
+        $contacts = $query->orderBy('created_at', 'desc')->paginate(7);
+        $categories = Category::all();
+
+        return view('admin', compact('contacts', 'categories'));
     }
 }
