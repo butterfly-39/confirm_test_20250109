@@ -19,9 +19,10 @@ h2 {
 
 .admin-search__form {
     display: flex;
-    gap: 25px;
+    gap: 27px;
     justify-content: center;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .admin-search__form input[type="text"] {
@@ -75,7 +76,7 @@ h2 {
 }
 
 .pagination-container {
-    margin: 20px 0;
+    margin: 5px 0;
     display: flex;
     justify-content: center;
 }
@@ -88,24 +89,25 @@ h2 {
 }
 
 .pagination li {
-    margin: 0 2px;
+    margin: 0 1px;
 }
 
 .pagination li a,
 .pagination li span {
     display: inline-block;
-    padding: 8px 12px;
+    padding: 4px 6px;
     border: 1px solid #ddd;
-    color: #333;
+    color: #8e8178;
     text-decoration: none;
-    min-width: 40px;
+    min-width: 32px;
     text-align: center;
+    font-size: 12px;
 }
 
 .pagination li.active span {
-    background-color: #666;
+    background-color: #8e8178;
     color: white;
-    border-color: #666;
+    border-color: #8e8178;
 }
 
 .pagination li.disabled span {
@@ -121,24 +123,35 @@ h2 {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    border-left: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
 }
 
 .admin-table th {
     background-color: #8e8178;
     color: white;
-    padding: 15px;
+    padding: 13px;
     text-align: left;
+    font-size: 14px;
 }
 
 .admin-table td {
     padding: 15px;
     border-bottom: 1px solid #e5e5e5;
+    font-size: 14px;
+    color: #8e8178;
 }
 
 .admin-table__btn {
-    padding: 5px 15px;
-    background-color: #e8e1db;
-    color: #8e8178;
+    padding: 8px 15px;
+    background-color: #faf9f8;
+    color: #d4c2b6;
     text-decoration: none;
     font-size: 14px;
+    border: 1px solid #d4c2b6;
+}
+
+.admin-table__btn:hover {
+    background-color: #8e8178;
+    color: white;
 }

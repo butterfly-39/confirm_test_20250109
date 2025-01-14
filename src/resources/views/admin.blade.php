@@ -47,9 +47,9 @@
             <ul class="pagination">
                 {{-- 前へ --}}
                 @if ($contacts->onFirstPage())
-                    <li class="disabled"><span>&laquo;</span></li>
+                    <li class="disabled"><span>&lt;</span></li>
                 @else
-                    <li><a href="{{ $contacts->previousPageUrl() }}" rel="prev">&laquo;</a></li>
+                    <li><a href="{{ $contacts->previousPageUrl() }}" rel="prev">&lt;</a></li>
                 @endif
 
                 {{-- ページ番号 --}}
@@ -63,9 +63,9 @@
 
                 {{-- 次へ --}}
                 @if ($contacts->hasMorePages())
-                    <li><a href="{{ $contacts->nextPageUrl() }}" rel="next">&raquo;</a></li>
+                    <li><a href="{{ $contacts->nextPageUrl() }}" rel="next">&gt;</a></li>
                 @else
-                    <li class="disabled"><span>&raquo;</span></li>
+                    <li class="disabled"><span>&gt;</span></li>
                 @endif
             </ul>
         </div>
