@@ -85,4 +85,13 @@ class ContactController extends Controller
 
         return view('admin', compact('contacts', 'categories'));
     }
+
+    public function destroy($id)
+    {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect('/admin');
+    }
+
 }

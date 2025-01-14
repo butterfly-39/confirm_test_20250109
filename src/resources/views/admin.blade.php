@@ -3,6 +3,87 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 <style>
+    .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal:target {
+    display: block;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+}
+
+.modal-item {
+    margin-bottom: 20px;
+}
+
+.modal-item label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.modal-item p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.modal-delete-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.delete-btn {
+    background-color: #ff4444;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-btn:hover {
+    background-color: #cc0000;
+}
 </style>
 @endsection
 
@@ -98,11 +179,69 @@
                 <td>{{ $contact->email }}</td>
                 <td>{{ $contact->category->content }}</td>
                 <td>
-                    <a href="/admin/{{ $contact->id }}" class="admin-table__btn">詳細</a>
+                    <a href="#modal-{{ $contact->id }}" class="admin-table__btn">詳細</a>
                 </td>
             </tr>
         @endforeach
     </tbody>
 </table>
+
+{{-- モーダルウィンドウの追加 --}}
+@foreach ($contacts as $contact)
+    <div class="modal" id="modal-{{ $contact->id }}">
+        <div class="modal-content">
+            <div class="modal-header">
+                <a href="#" class="close">&times;</a>
+            </div>
+            <div class="modal-body">
+                <div class="modal-item">
+                    <label>お名前</label>
+                    <p>{{ $contact->last_name }} {{ $contact->first_name }}</p>
+                </div>
+                <div class="modal-item">
+                    <label>性別</label>
+                    <p>
+                        @if ($contact->gender == 1)
+                            男性
+                        @elseif ($contact->gender == 2)
+                            女性
+                        @else
+                            その他
+                        @endif
+                    </p>
+                </div>
+                <div class="modal-item">
+                    <label>メールアドレス</label>
+                    <p>{{ $contact->email }}</p>
+                </div>
+                <div class="modal-item">
+                    <label>電話番号</label>
+                    <p>{{ $contact->tel }}</p>
+                </div>
+                <div class="modal-item">
+                    <label>住所</label>
+                    <p>{{ $contact->address }}</p>
+                </div>
+                <div class="modal-item">
+                    <label>建物名</label>
+                    <p>{{ $contact->building ?? '---' }}</p>
+                </div>
+                <div class="modal-item">
+                    <label>お問い合わせの種類</label>
+                    <p>{{ $contact->category->content }}</p>
+                </div>
+                <div class="modal-item">
+                    <label>お問い合わせ内容</label>
+                    <p>{{ $contact->detail }}</p>
+                </div>
+                <form action="/admin/{{ $contact->id }}" method="POST" class="modal-delete-form">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="delete-btn">削除</button>
+                </form>
+            </div>
+        </div>
+    </div>
+@endforeach
 
 @endsection
