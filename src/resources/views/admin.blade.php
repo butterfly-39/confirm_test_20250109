@@ -3,15 +3,13 @@
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 <style>
-    .modal {
+.modal {
     display: none;
     position: fixed;
-    z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,0.4);
 }
 
 .modal:target {
@@ -19,16 +17,15 @@
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 5% auto;
-    padding: 30px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 600px;
-    border-radius: 8px;
-    max-height: 90vh;
+    background-color: #fff;
+    margin: 50px auto;
+    padding: 80px 70px;
+    max-width: 650px;
+    height: 90vh;
     overflow-y: auto;
     position: relative;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .modal-header {
@@ -39,50 +36,63 @@
 }
 
 .close {
-    color: #aaa;
-    font-size: 28px;
-    font-weight: bold;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    color: #9f876e;
+    font-size: 24px;
+    font-weight: normal;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid #9f876e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
+    line-height: 0;
+    padding-bottom: 2px;
 }
 
 .close:hover,
 .close:focus {
-    color: black;
+    color: #9f876e;
     text-decoration: none;
 }
 
 .modal-item {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    display: flex;
 }
 
 .modal-item label {
+    color: #9f876e;
     font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
+    width: 160px;
 }
 
 .modal-item p {
+    color: #9f876e;
     margin: 0;
-    line-height: 1.5;
+    flex: 1;
 }
 
 .modal-delete-form {
     text-align: center;
-    margin-top: 20px;
+    margin-top: 65px;
 }
 
 .delete-btn {
-    background-color: #ff4444;
+    background-color: #B2442B;
     color: white;
-    padding: 10px 20px;
+    padding: 5px 15px;
     border: none;
-    border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
 }
 
 .delete-btn:hover {
-    background-color: #cc0000;
+    opacity: 0.8;
 }
 </style>
 @endsection
