@@ -13,8 +13,8 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
 use App\Http\Requests\LoginRequest;
-use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+use Laravel\Fortify\Contracts\RegisterResponse;
+use Illuminate\Http\RedirectResponse;
 
 class FortifyServiceProvider extends ServiceProvider
 {
@@ -31,6 +31,18 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        // 登録後のレスポンスをカスタマイズ
+        $this->app->singleton(RegisterResponse::class, function () {
+            return new class implements RegisterResponse {
+                public function toResponse($request): RedirectResponse
+                {
+                    // 自動ログインを防ぎ、loginページへリダイレクト
+                    auth()->logout();
+                    return redirect('/login');
+                }
+            };
+        });
+
         Fortify::createUsersUsing(CreateNewUser::class);
         Fortify::registerView(function () {
             return view('auth.register');

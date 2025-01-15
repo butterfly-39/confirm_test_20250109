@@ -60,4 +60,11 @@ class RouteServiceProvider extends ServiceProvider
             return Limit::perMinute(60)->by(optional($request->user())->id ?: $request->ip());
         });
     }
+
+    /**
+     * The path to the "register" route for your application.
+     *
+     * @var string
+     */
+    public const REGISTER_HOME = '/login';
 }
