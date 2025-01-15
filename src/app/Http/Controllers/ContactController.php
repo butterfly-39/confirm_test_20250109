@@ -135,10 +135,10 @@ class ContactController extends Controller
         // CSV出力の作成
         $callback = function() use ($contacts) {
             $file = fopen('php://output', 'w');
-            
+
             // BOMを追加してExcelで文字化けを防ぐ
             fputs($file, "\xEF\xBB\xBF");
-            
+
             // ヘッダー行
             fputcsv($file, [
                 'お名前',
@@ -155,7 +155,7 @@ class ContactController extends Controller
             // データ行
             foreach ($contacts as $contact) {
                 $gender = [1 => '男性', 2 => '女性', 3 => 'その他'][$contact->gender] ?? '';
-                
+
                 fputcsv($file, [
                     $contact->last_name . ' ' . $contact->first_name,
                     $contact->email,

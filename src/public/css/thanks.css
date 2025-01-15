@@ -7,6 +7,8 @@ main {
 }
 
 h1 {
+    font-family: 'Libre Baskerville',
+            serif;
     font-size: 200px;
     margin: 0 auto;
     color: #ebe7e4;
