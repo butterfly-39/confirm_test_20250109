@@ -94,4 +94,83 @@ class ContactController extends Controller
         return redirect('/admin');
     }
 
+    public function export(Request $request)
+    {
+        $query = Contact::query()
+            ->with('category');
+
+        // admin メソッドと同じ検索条件を適用
+        if ($request->filled('search')) {
+            $search = $request->input('search');
+            $query->where(function($q) use ($search) {
+                $q->where('first_name', 'LIKE', "%{$search}%")
+                    ->orWhere('last_name', 'LIKE', "%{$search}%")
+                    ->orWhere('email', 'LIKE', "%{$search}%");
+            });
+        }
+
+        if ($request->filled('gender') && $request->input('gender') !== '0') {
+            $query->where('gender', $request->input('gender'));
+        }
+
+        if ($request->filled('category')) {
+            $query->where('category_id', $request->input('category'));
+        }
+
+        if ($request->filled('date')) {
+            $query->whereDate('created_at', $request->input('date'));
+        }
+
+        $contacts = $query->get();
+
+        // CSVヘッダーの設定
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=contacts.csv',
+            'Pragma' => 'no-cache',
+            'Cache-Control' => 'must-revalidate, post-check=0, pre-check=0',
+            'Expires' => '0'
+        ];
+
+        // CSV出力の作成
+        $callback = function() use ($contacts) {
+            $file = fopen('php://output', 'w');
+            
+            // BOMを追加してExcelで文字化けを防ぐ
+            fputs($file, "\xEF\xBB\xBF");
+            
+            // ヘッダー行
+            fputcsv($file, [
+                'お名前',
+                'メールアドレス',
+                '性別',
+                '電話番号',
+                '住所',
+                '建物名',
+                'お問い合わせの種類',
+                'お問い合わせ内容',
+                '作成日時'
+            ]);
+
+            // データ行
+            foreach ($contacts as $contact) {
+                $gender = [1 => '男性', 2 => '女性', 3 => 'その他'][$contact->gender] ?? '';
+                
+                fputcsv($file, [
+                    $contact->last_name . ' ' . $contact->first_name,
+                    $contact->email,
+                    $gender,
+                    $contact->tel,
+                    $contact->address,
+                    $contact->building,
+                    $contact->category->content,
+                    $contact->detail,
+                    $contact->created_at
+                ]);
+            }
+            fclose($file);
+        };
+
+        return response()->stream($callback, 200, $headers);
+    }
 }

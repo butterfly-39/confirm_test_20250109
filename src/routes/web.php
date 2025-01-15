@@ -20,4 +20,5 @@ Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
 Route::get('/admin', [ContactController::class, 'admin']);
 Route::delete('/admin/{id}', [ContactController::class, 'destroy']);
+Route::get('/admin/export', [ContactController::class, 'export']);
 
