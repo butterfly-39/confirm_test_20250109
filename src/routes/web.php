@@ -15,10 +15,11 @@ use App\Http\Controllers\ContactController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [ContactController::class, 'index']);
+    Route::get('/admin', [ContactController::class, 'admin']);
+    Route::delete('/admin/{id}', [ContactController::class, 'destroy']);
+    Route::get('/admin/export', [ContactController::class, 'export']);
+    Route::get('/logout', [ContactController::class, 'logout']);
 });
 Route::post('/confirm', [ContactController::class, 'confirm']);
 Route::post('/thanks', [ContactController::class, 'store']);
-Route::get('/admin', [ContactController::class, 'admin']);
-Route::delete('/admin/{id}', [ContactController::class, 'destroy']);
-Route::get('/admin/export', [ContactController::class, 'export']);
 

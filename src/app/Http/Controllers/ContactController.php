@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
 
 class ContactController extends Controller
 {
@@ -172,5 +173,11 @@ class ContactController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/login');
     }
 }
