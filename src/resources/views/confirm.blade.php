@@ -14,7 +14,9 @@
             <tr class="confirm-table__row">
                 <th class="confirm-table__header">お名前</th>
                 <td class="confirm-table__text">
-                    <span><input type="text" name="last_name" value="{{ $contact['last_name'] }}" readonly /></span> <span><input type="text" name="first_name" value="{{ $contact['first_name'] }}" readonly /></span>
+                    <div class="name-input">
+                        <span><input type="text" name="last_name" value="{{ $contact['last_name'] }}" readonly /></span><span><input type="text" name="first_name" value="{{ $contact['first_name'] }}" readonly /></span>
+                    </div>
                 </td>
             </tr>
             <tr class="confirm-table__row">

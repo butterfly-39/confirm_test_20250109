@@ -23,7 +23,9 @@ h2 {
     border: 1px solid #ddd;
 }
 
-
+.name-input span+span {
+    margin-left: 8px;
+}
 
 .confirm-table__inner {
     width: 100%;
